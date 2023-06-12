@@ -8,7 +8,7 @@ class Room(models.Model):
         CONFERENCE = 'conference', 'Conference',
 
     name = models.CharField(max_length=255)
-    type = models.CharField(max_length=20, choices=RoomType.choices, default=RoomType.team)
+    type = models.CharField(max_length=20, choices=RoomType.choices, default=RoomType.TEAM)
     capacity = models.SmallIntegerField()
 
     def __str__(self):

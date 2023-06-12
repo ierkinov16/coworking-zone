@@ -1,6 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.response import Response
 
 from allworks.models.room import Room
 from pagination import CustomPageNumberPagination
@@ -29,3 +30,8 @@ class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method == 'POST':
             return RoomListSerializer
         return RoomDetailSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        room = Room.objects.filter(id=self.kwargs.get('pk')).first()
+        if not room:
+            return Response({'error': 'topilmadi'}, status=status.HTTP_404_NOT_FOUND)
