@@ -35,3 +35,4 @@ class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
         if not room:
             return Response({'error': 'topilmadi'}, status=status.HTTP_404_NOT_FOUND)
         return super().retrieve(request, *args, **kwargs)
+
