@@ -24,7 +24,6 @@ class RoomListCreateView(generics.ListCreateAPIView):
 
 class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
-    lookup_field = 'id'
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -35,3 +34,4 @@ class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
         room = Room.objects.filter(id=self.kwargs.get('pk')).first()
         if not room:
             return Response({'error': 'topilmadi'}, status=status.HTTP_404_NOT_FOUND)
+        return super().retrieve(request, *args, **kwargs)
