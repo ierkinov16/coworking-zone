@@ -22,7 +22,7 @@ from drf_yasg import openapi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('rooms/', include('allworks.urls.room_urls')),
+    path('api/rooms/', include('allworks.urls.room_urls')),
     path('resident', include('allworks.urls.resident_urls')),
     path('booking/', include('allworks.urls.booking_urls'))
 ]
